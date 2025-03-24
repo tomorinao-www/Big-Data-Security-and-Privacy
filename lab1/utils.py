@@ -116,7 +116,7 @@ def client(filepath: str, host: str = "127.0.0.1", port: int = 12345) -> None:
     """客户端入口"""
     filepath = Path(filepath)
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect(("127.0.0.1", 12345))
+        s.connect((host, port))
         prime, base = 23, 5
         key = dh_key_exchange(s, prime, base)
         logger.info(f"密钥交换：key={key}")
