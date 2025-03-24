@@ -1,0 +1,10 @@
+[project]
+name = "big-data-security-and-privacy"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "loguru>=0.7.3",
+    "pycryptodome>=3.22.0",
+]
