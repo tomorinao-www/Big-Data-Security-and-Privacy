@@ -1,5 +1,23 @@
 # 西电 - 大数据安全与隐私 - 随课实验
 
+## 依赖
+
+安装 python
+
+安装 uv
+
+    pip install uv
+
+创建虚拟环境
+
+    uv init
+
+安装依赖
+
+    uv pip freeze > requirements.txt
+
+    uv pip install -r requirements.txt
+
 ## lab1 现代密码学基础技能
 
 ![](/img/lab1.png)
