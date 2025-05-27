@@ -10,7 +10,7 @@
 
 创建虚拟环境
 
-    uv init
+    uv venv
 
 安装依赖
 
