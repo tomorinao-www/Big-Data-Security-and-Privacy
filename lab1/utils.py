@@ -1,7 +1,6 @@
 import socket
 import sys
 import threading
-import os
 import time
 import random
 from pathlib import Path
@@ -17,7 +16,6 @@ logger_id = logger.add(
     sys.stdout,
     level=0,
     diagnose=False,
-    # format=default_format,
 )
 
 
@@ -65,13 +63,11 @@ def send_file(sock: socket.socket, filepath: Path, key) -> None:
 
 
 def receive_file(sock: socket.socket, save_path: str, key) -> None:
-    """发送文件 filepath 到已经连接的 socket"""
+    """接受文件 并保存到 save_path"""
     with open(save_path, "wb") as f:
         while True:
             chunk_size = sock.recv(4)
             if not chunk_size:
-                break
-            if chunk_size == b"END":
                 break
             chunk_size = int.from_bytes(chunk_size, "big")
             if chunk_size == 0:
@@ -85,7 +81,7 @@ def receive_file(sock: socket.socket, save_path: str, key) -> None:
 
 def server_task(conn: socket.socket) -> None:
     """服务函数"""
-    prime, base = 23, 5
+    prime, base = 23, 5  # 模 23 循环群，生成元为 5
     key = dh_key_exchange(conn, prime, base)
     logger.info(f"密钥交换成功！key={key}")
     while True:

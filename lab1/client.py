@@ -5,7 +5,7 @@ def main():
     while True:
         try:
             filename = input("输入传输文件路径：")
-            client(filename, host="23.95.227.104")
+            client(filename, host="127.0.0.1")
         except Exception as e:
             print(e)
 
